@@ -1,4 +1,4 @@
-pragma solidity 0.4.20;
+pragma solidity 0.4.22;
 
 contract Casino {
 
@@ -18,7 +18,7 @@ contract Casino {
     mapping(address => Player) public playerInfo;
 
     // Set creator of contract as owner
-    function Casino(uint _minimumBet) public {
+    constructor(uint _minimumBet) public {
         owner = msg.sender;
         if(_minimumBet != 0)
             minimumBet = _minimumBet;
@@ -44,7 +44,7 @@ contract Casino {
     }
 
     // Reset the game
-    function resetData() {
+    function resetData() private {
         players.length = 0;
         totalBet = 0;
         numberOfBets = 0;
